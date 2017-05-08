@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/music_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="2dp"
+        android:src="@mipmap/splash_music" />
+
+    <TextView
+        android:id="@+id/music_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/music_image"
+        android:text="三国演义"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/music_autho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/music_title"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/music_image"
+        android:text="陈奕迅" />
+
+    <TextView
+        android:id="@+id/music_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/music_title"
+        android:layout_marginRight="5dp"
+        android:text="4M" />
+
+    <TextView
+        android:id="@+id/music_longtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/music_autho"
+        android:layout_below="@id/music_size"
+        android:layout_marginRight="5dp"
+        android:text="4:31" />
+
+</RelativeLayout>

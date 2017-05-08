@@ -1,0 +1,79 @@
+import java.io.File;
+
+import android.os.Bundle;
+import android.widget.TextView;
+
+import com.joanzapata.pdfview.PDFView;
+import com.joanzapata.pdfview.listener.OnPageChangeListener;
+
+public class PDFActivity extends Activity implements OnPageChangeListener {
+
+	public static final String PDF_NAME = "xxx.pdf";// 书名
+	private PDFView pdfView;
+	private TextView pdf_tv_num;
+	private int bookPage = 1;
+
+	public final static String BOOKID = "bookId";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_pdf);
+		pdfView = (PDFView) findViewById(R.id.pdfView);
+		pdf_tv_num = (TextView) findViewById(R.id.pdf_tv_num);
+
+		String bId = mCache.getAsString("pdfPage");// 获取上次读取的页数
+		if (!isNEB(bId)) {
+			bookPage = Integer.parseInt(bId);
+		}
+
+		String path = activity.getFilesDir().getAbsolutePath();// 获取路径
+		File file = new File(path, PDF_NAME);
+		if (file.exists()) {
+			pdfView.fromFile(file).defaultPage(bookPage).onPageChange(this)
+					.load();// 显示要看的第几页
+		}
+	}
+
+	public void onPageChanged(int page, int pageCount) {
+			bookPage = page;
+			pdf_tv_num.setText(page + "/" + pageCount);// page正在看的页数，pageCount总页数
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		// TODO 这里先保存的页数  bookPage
+		
+		// 如果退出要删除pdf,执底下的代码，否则不需要
+		String path = activity.getFilesDir().getAbsolutePath();
+		File file = new File(path, PDF_NAME);
+		if (file.exists()) {
+			file.delete();
+			finish();
+		}
+	}
+
+}
+/*******************************************************/
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.joanzapata.pdfview.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/pdf_tv_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:textColor="#000000"
+        android:textSize="12sp" />
+
+</RelativeLayout>

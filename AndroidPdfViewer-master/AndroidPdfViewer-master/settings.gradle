@@ -1,0 +1,2 @@
+include ':android-pdf-viewer', ':pdflibrary'
+include ':sample'

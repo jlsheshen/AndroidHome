@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="100dp" 
+    android:background="#ffffff"
+    >
+    <CheckBox  
+        android:id="@+id/bundle_up_cb"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="weqweqwe"
+        
+        />
+        <TextView  
+        android:id="@+id/bundle_up_tv"
+         android:layout_below="@id/bundle_up_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="绑扎"
+        />
+            <CheckBox  
+        android:id="@+id/seal_cb"
+        android:layout_toRightOf="@id/bundle_up_cb"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="66546"
+        
+        />
+        <TextView  
+        android:id="@+id/seal_tv"
+       android:layout_toRightOf="@id/bundle_up_cb"
+        android:layout_below="@id/bundle_up_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+                android:text="盖章"
+        
+        />
+    
+    
+
+</RelativeLayout>
